@@ -245,6 +245,15 @@ func (s *MatcherStore) updateVulnerabilities(ctx context.Context, updater string
 		hashKind, hash := md5Vuln(vuln)
 		vKind, vrLower, vrUpper := rangefmt(vuln.Range)
 
+		if vuln.Name == "GHSA-4374-p667-p6c8" {
+			fmt.Println(vuln)
+			fmt.Println(vuln.Range.Lower)
+			fmt.Println(vrLower)
+			fmt.Println(vuln.Range.Upper)
+			fmt.Println(vrUpper)
+			fmt.Println(*vKind)
+		}
+
 		err := mBatcher.Queue(ctx, insert,
 			hashKind, hash,
 			vuln.Name, vuln.Updater, vuln.Description, vuln.Issued, vuln.Links, vuln.Severity, vuln.NormalizedSeverity,

@@ -612,6 +612,13 @@ func (e *ecs) Insert(ctx context.Context, skipped *stats, name string, a *adviso
 					zlog.Warn(ctx).Err(err).Msg("event version error")
 				}
 			}
+
+			if v.Name == "GHSA-4374-p667-p6c8" {
+				fmt.Println(v)
+				fmt.Println(v.Range.Lower)
+				fmt.Println(v.Range.Upper)
+			}
+
 			if len(ranges) > 0 {
 				switch af.Package.Ecosystem {
 				case ecosystemMaven, ecosystemPyPI, ecosystemRubyGems:
