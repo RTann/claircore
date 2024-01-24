@@ -89,6 +89,10 @@ func TestMatcherIntegration(t *testing.T) {
 	vulns := vr.Vulnerabilities
 	t.Logf("Number of Vulnerabilities found: %d", len(vulns))
 
+	for _, vuln := range vulns {
+		t.Log(vuln.Name)
+	}
+
 	//if len(vulns) < 2 {
 	t.Fatalf("failed to match vulns: %v", err)
 	//}
